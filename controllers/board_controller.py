@@ -8,13 +8,13 @@ from views.console_board_view import ConsoleBoardView
 
 class BoardController:
     def __init__(self):
-        self.actual_player = self.black_player
-        self.black_player = self._select_player(Board.BLACK)
         self.white_player = self._select_player(Board.WHITE)
+        self.black_player = self._select_player(Board.BLACK)
         self.board = Board(None)
         self.view  = ConsoleBoardView(self.board)
 
     def init_game(self):
+        self.actual_player = self.black_player
         finish_game = 0
         self.view.update_view()
 
