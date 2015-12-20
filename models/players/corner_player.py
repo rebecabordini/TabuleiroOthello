@@ -1,22 +1,26 @@
+# -*- coding:utf-8 -*-
+
 class CornerPlayer:
-  def __init__(self, color):
-    self.color = color
+    def __init__(self, color):
+        self.color = color
 
-  def play(self, board):
-    return self.getNearestCorner(board.valid_moves(self.color))
+    def play(self, board):
+        return self.get_nearest_corner(board.valid_moves(self.color))
 
-  def getNearestCorner(self, moves):
-    import math
-    corners = [[1,1],[1,8], [8,1], [8,8]]
-    minDist = 10
-    retMove = None
-    for move in moves:
-      for corner in corners:
-        distX = abs(corner[0] - move.x)
-        distY = abs(corner[1] - move.y)
-        dist  = math.sqrt(distX*distX + distY*distY)
-        if dist < minDist:
-          minDist = dist
-          retMove = move
+    @staticmethod
+    def get_nearest_corner(moves):
+        import math
 
-    return retMove
+        corners = [[1, 1], [1, 8], [8, 1], [8, 8]]
+        min_distance = 10
+        next_move = None
+        for move in moves:
+            for corner in corners:
+                distance_in_x_axis = abs(corner[0] - move.x)
+                distance_in_y_axis = abs(corner[1] - move.y)
+                dist = math.sqrt(distance_in_x_axis * distance_in_x_axis + distance_in_y_axis * distance_in_y_axis)
+                if dist < min_distance:
+                    min_distance = dist
+                    next_move = move
+
+        return next_move
