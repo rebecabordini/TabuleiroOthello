@@ -61,5 +61,5 @@ class BoardController:
         player = raw_input("Digite o numero do player que voce deseja: ")
         module_globals = {}
         execfile(players[int(player)], module_globals)
-        print module_globals.keys()
+        print(module_globals.keys())
         return module_globals[module_globals.keys()[len(module_globals.keys()) - 1]](color)
