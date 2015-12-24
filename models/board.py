@@ -99,7 +99,7 @@ class Board:
 
         if bracket_color == color:
             return None
-        opponent = self._opponent(color)
+        opponent = self.opponent(color)
         while bracket_color == opponent:
             bracket = [bracket[0] + direction[0], bracket[1] + direction[1]]
             bracket_color = self.board[bracket[0]][bracket[1]]
@@ -107,5 +107,5 @@ class Board:
         return None if self.board[bracket[0]][bracket[1]] in (Board.OUTER, Board.EMPTY) else bracket
 
     @staticmethod
-    def _opponent(color):
+    def opponent(color):
         return Board.BLACK if color is Board.WHITE else Board.WHITE
